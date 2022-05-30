@@ -1,14 +1,7 @@
 const usersRouter = require('express').Router()
 
 usersRouter.get('/', (req, res) => {
-  res.status(200).json({
-    results: [
-      {
-        id: 1,
-        name: 'Juan'
-      }
-    ]
-  })
+  res.status(200).json({})
 })
 
 module.exports = { usersRouter }
