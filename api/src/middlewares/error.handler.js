@@ -12,8 +12,7 @@ const handleSQLError = (err, req, res, next) => {
       message: err.message,
       errors: err.errors
     })
-  }
-  next(err)
+  } else { next(err) }
 }
 
 const handleBoomError = (err, req, res, next) => {
@@ -22,8 +21,7 @@ const handleBoomError = (err, req, res, next) => {
     res.status(output.statusCode).json({
       message: output.payload
     })
-  }
-  next(err)
+  } else { next(err) }
 }
 
 const handleError = (err, req, res, next) => {
