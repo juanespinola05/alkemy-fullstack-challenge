@@ -24,6 +24,7 @@ class LoginService {
 
     const tokenPayload = {
       email,
+      username: user.username,
       id: user.id
     }
 
@@ -37,6 +38,7 @@ class LoginService {
 
     return {
       email: user.email,
+      username: user.username,
       token
     }
   }

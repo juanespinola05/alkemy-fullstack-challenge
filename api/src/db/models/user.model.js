@@ -14,6 +14,11 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING
   },
+  username: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    unique: true
+  },
   email: {
     allowNull: false,
     type: DataTypes.STRING,
