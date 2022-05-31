@@ -3,13 +3,13 @@
 const { OPERATIONS_TABLE, OperationSchema } = require('../models/operations.model')
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn(OPERATIONS_TABLE, 'userId', {
+  async up (queryInterface) {
+    await queryInterface.addColumn(OPERATIONS_TABLE, OperationSchema.userId.field, {
       ...OperationSchema.userId
     })
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn(OPERATIONS_TABLE, 'userId')
+  async down (queryInterface) {
+    await queryInterface.removeColumn(OPERATIONS_TABLE, OperationSchema.userId.field)
   }
 }

@@ -1,7 +1,6 @@
 'use strict'
 
 const { OPERATIONS_TABLE } = require('../models/operations.model')
-const { USER_TABLE } = require('../models/user.model')
 
 const { DataTypes, Sequelize } = require('sequelize')
 
@@ -36,17 +35,6 @@ module.exports = {
         type: DataTypes.DATE,
         defaultValue: Sequelize.NOW,
         field: 'created_at'
-      },
-      userId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        field: 'user_id',
-        references: {
-          model: USER_TABLE,
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
       }
     })
   },
