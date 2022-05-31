@@ -1,4 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize')
+const { USER_TABLE } = require('./user.model')
 
 const OPERATIONS_TABLE = 'operations'
 
@@ -31,11 +32,27 @@ const OperationSchema = {
     type: DataTypes.DATE,
     defaultValue: Sequelize.NOW,
     field: 'created_at'
+  },
+  userId: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    field: 'user_id',
+    references: {
+      model: USER_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   }
 }
 
 class Operation extends Model {
-  static associate (models) {}
+  static associate (models) {
+    this.belongsTo(models.User, {
+      as: 'user'
+    })
+  }
+
   static config (sequelize) {
     return {
       sequelize,
