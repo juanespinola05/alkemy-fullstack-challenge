@@ -1,7 +1,7 @@
 const { ValidationError } = require('sequelize')
 
 const logErrors = (err, req, res, next) => {
-  console.error(err)
+  console.error(err.message)
   next(err)
 }
 
@@ -12,16 +12,18 @@ const handleSQLError = (err, req, res, next) => {
       message: err.message,
       errors: err.errors
     })
-  } else { next(err) }
+  } else {
+    next(err)
+  }
 }
 
 const handleBoomError = (err, req, res, next) => {
   if (err.isBoom) {
     const { output } = err
-    res.status(output.statusCode).json({
-      message: output.payload
-    })
-  } else { next(err) }
+    res.status(output.statusCode).json(output.payload)
+  } else {
+    next(err)
+  }
 }
 
 const handleError = (err, req, res, next) => {
