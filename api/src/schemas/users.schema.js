@@ -5,8 +5,12 @@ const username = Joi.string().alphanum().min(4).max(20)
 const email = Joi.string().email()
 const password = Joi.string().min(6)
 
-const getUserByUsernameSchema = Joi.object({
+const checkUsernameSchema = Joi.object({
   username: username.required()
+})
+
+const checkEmailSchema = Joi.object({
+  email: email.required()
 })
 
 const registerUserSchema = Joi.object({
@@ -16,4 +20,4 @@ const registerUserSchema = Joi.object({
   password: password.required()
 })
 
-module.exports = { registerUserSchema, getUserByUsernameSchema }
+module.exports = { registerUserSchema, checkUsernameSchema, checkEmailSchema }
