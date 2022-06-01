@@ -1,7 +1,12 @@
 const operationsRouter = require('express').Router()
 const { handleValidation } = require('../middlewares/validation.handler')
 const { OperationsService } = require('../services/operations.service')
-const { getOperationsSchema, createOperationSchema } = require('../schemas/operations.schema')
+const {
+  getOperationsSchema,
+  createOperationSchema,
+  updateOperationSchema,
+  requireIdSchema
+} = require('../schemas/operations.schema')
 const { getUserFromToken } = require('../middlewares/getUserFromToken')
 const { validateUserInToken } = require('../middlewares/validateUserInToken')
 const service = new OperationsService()
@@ -39,6 +44,23 @@ operationsRouter.get('/:year/:month',
         offset
       })
       res.status(200).json(operations)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
+
+operationsRouter.patch('/edit/:id',
+  handleValidation(updateOperationSchema, 'body'),
+  handleValidation(requireIdSchema, 'params'),
+  getUserFromToken,
+  validateUserInToken,
+  async (req, res, next) => {
+    const { id } = req.params
+    try {
+      const operationChanges = await service.update(id, req.body)
+      console.log(operationChanges)
+      res.status(200).json(operationChanges)
     } catch (error) {
       next(error)
     }

@@ -36,6 +36,12 @@ class OperationsService {
     })
     return operations
   }
+
+  async update (id, changes) {
+    const operation = await models.Operation.findByPk(id)
+    const { dataValues } = await operation.update(changes)
+    return dataValues
+  }
 }
 
 module.exports = { OperationsService }
