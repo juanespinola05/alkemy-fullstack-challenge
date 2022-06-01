@@ -2,6 +2,7 @@ const Joi = require('joi')
 
 const monthsRegex = /(january)|(february)|(march)|(april)|(may)|(june)|(july)|(august)|(september)|(october)|(november)|(december)/i
 
+const id = Joi.number().integer()
 const userId = Joi.number().integer()
 const month = Joi.string().pattern(monthsRegex, 'months')
 const year = Joi.number().integer().min(2022)
@@ -27,4 +28,20 @@ const createOperationSchema = Joi.object({
   userId
 })
 
-module.exports = { getOperationsSchema, createOperationSchema }
+const updateOperationSchema = Joi.object({
+  concept,
+  amount,
+  type,
+  date
+})
+
+const requireIdSchema = Joi.object({
+  id: id.required()
+})
+
+module.exports = {
+  getOperationsSchema,
+  createOperationSchema,
+  updateOperationSchema,
+  requireIdSchema
+}
