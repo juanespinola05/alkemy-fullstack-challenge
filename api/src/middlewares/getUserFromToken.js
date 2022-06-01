@@ -12,10 +12,15 @@ const getUserFromToken = (req, res, next) => {
   }
 
   try {
-    decodedToken = jwt.verify(token, JWT_SECRET)
+    jwt.verify(token, JWT_SECRET, (error, decoded) => {
+      if (error) throw error
+      decodedToken = decoded
+    })
   } catch (error) {
-    // avoid jwt exceptions
-    return next(boom.unauthorized('Missing or invalid token'))
+    const msg = error.name === 'TokenExpiredError'
+      ? 'Token expired'
+      : 'Missing or invalid token'
+    return next(boom.unauthorized(msg))
   }
 
   if (!token || !decodedToken.username) {
