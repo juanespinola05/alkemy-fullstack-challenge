@@ -32,7 +32,7 @@ class LoginService {
       tokenPayload,
       JWT_SECRET,
       {
-        expiresIn: 60 * 60 * 24 * 7 * 30
+        expiresIn: 60 * 60 * 24 * 30
       }
     )
 
