@@ -1,21 +1,32 @@
+const boom = require('@hapi/boom')
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/config')
 
 const getUserFromToken = (req, res, next) => {
   const authorizationHeader = req.get('authorization')
   let token = ''
+  let decodedToken
+
   if (authorizationHeader && authorizationHeader.toLowerCase().startsWith('bearer')) {
     token = authorizationHeader.split(' ')[1]
   }
 
-  const decodedToken = jwt.decode(token, JWT_SECRET)
+  try {
+    decodedToken = jwt.verify(token, JWT_SECRET)
+  } catch (error) {
+    // avoid jwt exceptions
+    return next(boom.unauthorized('Missing or invalid token'))
+  }
 
   if (!token || !decodedToken.username) {
-    res.status(401).json({
-      error: 'Authorization error: token was not provided or invalidgetUserFromToken'
-    })
+    return next(boom.unauthorized('Missing or invalid token'))
   }
+
+  req.user = {
+    username: decodedToken.username,
+    id: decodedToken.id
+  }
+  next()
 }
-// !! finish this
 
 module.exports = { getUserFromToken }
