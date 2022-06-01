@@ -1,12 +1,48 @@
 const operationsRouter = require('express').Router()
 const { handleValidation } = require('../middlewares/validation.handler')
-const { getOperationsSchema } = require('../schemas/operations.schema')
+const { OperationsService } = require('../services/operations.service')
+const { getOperationsSchema, createOperationSchema } = require('../schemas/operations.schema')
 const { getUserFromToken } = require('../middlewares/getUserFromToken')
+const { validateUserInToken } = require('../middlewares/validateUserInToken')
+const service = new OperationsService()
 
-operationsRouter.get('/:month',
-  handleValidation(getOperationsSchema, 'params'),
+operationsRouter.post('/',
   getUserFromToken,
+  validateUserInToken,
+  handleValidation(createOperationSchema, 'body'),
   async (req, res, next) => {
-    const { month } = req.params
+    const data = {
+      ...req.body,
+      userId: req.user.id
+    }
+    try {
+      const newOperation = await service.create(data)
+      res.status(201).json(newOperation)
+    } catch (error) {
+      next(error)
+    }
   }
 )
+
+operationsRouter.get('/:year/:month',
+  handleValidation(getOperationsSchema, 'params'),
+  getUserFromToken,
+  validateUserInToken,
+  async (req, res, next) => {
+    try {
+      const { year, month, limit, offset } = req.params
+      const operations = await service.findByMonth({
+        username: req.user.username,
+        year,
+        month,
+        limit,
+        offset
+      })
+      res.status(200).json(operations)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
+
+module.exports = { operationsRouter }
