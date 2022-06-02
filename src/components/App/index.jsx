@@ -1,27 +1,31 @@
 import { Nav } from '../'
-import { Routes, Route, Link } from 'react-router-dom'
-import { AppContainer, LinkItem } from './appStyles'
+import { Routes, Route } from 'react-router-dom'
+import { AppContainer } from './appStyles'
+import { useEffect, useState } from 'react'
 
 function App () {
+  const [windowWidth, setWindowWidth] = useState(null)
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleWindowResize)
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize)
+    }
+  })
+
   return (
     <AppContainer className='app'>
-      <Nav.Mobile>
-        <LinkItem>
-          <Link to='/'>
-            Home
-          </Link>
-        </LinkItem>
-        <LinkItem>
-          <Link to='/operations'>
-            Operations
-          </Link>
-        </LinkItem>
-        <LinkItem>
-          <Link to='/my-account'>
-            My account
-          </Link>
-        </LinkItem>
-      </Nav.Mobile>
+
+      {
+        windowWidth >= 480
+          ? <Nav.Desktop />
+          : <Nav.Mobile />
+      }
+
       <main>
         <Routes>
           <Route path='/' element={<h1>Home</h1>} />
