@@ -1,6 +1,6 @@
 import { Nav } from '../'
 import { Routes, Route, Link } from 'react-router-dom'
-import { AppContainer, LinkItem } from './styles'
+import { AppContainer, LinkItem } from './appStyles'
 
 function App () {
   return (
