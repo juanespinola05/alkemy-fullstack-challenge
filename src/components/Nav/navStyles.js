@@ -8,6 +8,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--color-white);
 `
 export const MenuButton = styled.button`
   display: block;
