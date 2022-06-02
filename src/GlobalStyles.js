@@ -22,9 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: 'Mulish', Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -39,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-gray-lighter: #CCCBD8;
     --color-gray-darker: #4e4e4f;
     --color-red: #D14F4F;
-    --color-red-transparent: #F5DCDC
+    --color-red-transparent: #F5DCDC;
     --color-green: #6ED69E;
     --color-green-transparent: #DCF5E8;
 
