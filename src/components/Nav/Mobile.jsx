@@ -1,5 +1,5 @@
 import { Icon, NavLinksList } from '../'
-import { Header, MenuButton } from './navStyles'
+import { Header, MenuButton, HeaderContainer, NavContainer } from './navStyles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
@@ -11,7 +11,7 @@ const linksListVariants = {
 const Mobile = ({ children }) => {
   const [menuOpened, setMenuOpened] = useState(false)
   return (
-    <div>
+    <HeaderContainer>
       <Header>
         <div>
           <Icon type='logo' size='45' />
@@ -22,7 +22,7 @@ const Mobile = ({ children }) => {
           </MenuButton>
         </div>
       </Header>
-      <nav>
+      <NavContainer>
         <AnimatePresence>
           {menuOpened && (
             <motion.ul
@@ -36,8 +36,8 @@ const Mobile = ({ children }) => {
             </motion.ul>
           )}
         </AnimatePresence>
-      </nav>
-    </div>
+      </NavContainer>
+    </HeaderContainer>
   )
 }
 

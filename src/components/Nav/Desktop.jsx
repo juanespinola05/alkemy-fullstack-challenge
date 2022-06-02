@@ -1,7 +1,9 @@
+import { NavLinksList } from '../'
+
 const Desktop = ({ children }) => {
   return (
     <nav>
-      {children}
+      <NavLinksList />
     </nav>
   )
 }
