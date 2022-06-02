@@ -1,4 +1,4 @@
-import { Icon } from '../Icon'
+import { Icon, NavLinksList } from '../'
 import { Header, MenuButton } from './navStyles'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
@@ -32,7 +32,7 @@ const Mobile = ({ children }) => {
               exit='closed'
               variants={linksListVariants}
             >
-              {children}
+              <NavLinksList />
             </motion.ul>
           )}
         </AnimatePresence>
