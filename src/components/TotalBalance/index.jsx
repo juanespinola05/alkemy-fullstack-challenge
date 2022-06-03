@@ -1,5 +1,17 @@
-import { TotalContainer, Title, LastOpAmount, LastOp, TotalInfo } from './totalBallanceStyles'
+import {
+  TotalContainer,
+  Title,
+  LastOpAmount,
+  LastOp,
+  TotalInfo,
+  ButtonsContainer,
+  BallanceInt,
+  BallanceDec,
+  BallanceInfo,
+  WalletText
+} from './totalBallanceStyles'
 import { Button } from '../'
+import { Link } from 'react-router-dom'
 
 const TotalBalance = () => {
   return (
@@ -8,15 +20,17 @@ const TotalBalance = () => {
         <Title>Total Ballance</Title>
         <LastOpAmount color='green'>+ $28,55</LastOpAmount>
         <LastOp>Last transaction</LastOp>
-        <div>
+        <ButtonsContainer>
           <Button primary>July</Button>
-          <Button>See all</Button>
-        </div>
+          <Link to='/operations'>
+            <Button>See all</Button>
+          </Link>
+        </ButtonsContainer>
       </TotalInfo>
-      <div>
-        <p>$ 200<span>.58</span></p>
-        <p>wallets amount</p>
-      </div>
+      <BallanceInfo>
+        <BallanceInt>$55.289<BallanceDec>.58</BallanceDec></BallanceInt>
+        <WalletText>wallets amount</WalletText>
+      </BallanceInfo>
     </TotalContainer>
   )
 }
