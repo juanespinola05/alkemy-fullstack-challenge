@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const ButtonStyled = styled.button`
-  width: 130px;
-  height: 50px;
+  width: 6.1em;
+  height: 2.5em;
   border: ${({ primary }) => primary ? 'none' : '1px solid var(--main-color)'};
-  border-radius: 30px;
+  border-radius: 50px;
   background-color: ${({ primary }) => primary ? 'var(--main-color)' : 'var(--color-white)'};
   font-weight: 600;
-  font-size: 18px;
+  font-size: 0.9em;
   color: ${({ primary }) => primary ? 'var(--color-white)' : 'var(--main-color)'};
   cursor: pointer;
 `
