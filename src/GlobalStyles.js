@@ -44,3 +44,20 @@ export const GlobalStyle = createGlobalStyle`
     background-color: var(--main-color-transparent)
   }
 `
+const size = {
+  mobileS: '320px',
+  mobileM: '425px',
+  mobileL: '590px',
+  tablet: '768px',
+  laptop: '992px',
+  desktop: '1200px'
+}
+
+export const devices = {
+  mobileS: `min-width: ${size.mobileS}`,
+  mobileM: `min-width: ${size.mobileM}`,
+  mobileL: `min-width: ${size.mobileL}`,
+  tablet: `min-width: ${size.tablet}`,
+  laptop: `min-width: ${size.laptop}`,
+  desktop: `min-width: ${size.desktop}`
+}
