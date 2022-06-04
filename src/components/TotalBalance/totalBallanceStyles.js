@@ -50,7 +50,7 @@ export const LastOpAmount = styled.p`
   font-weight: 900;
 `
 export const ButtonsContainer = styled.div`
-  font-size: 25px;
+  font-size: 20px;
   display: flex;
   gap: 10px;
 `
@@ -71,7 +71,7 @@ export const BallanceInfo = styled.div`
   }
 `
 export const BallanceInt = styled.p`
-  color: var(--main-color);
+  color: var(--color-main);
   font-size:  2em;
   font-weight: 900;
   @media (${devices.mobileL}) {
