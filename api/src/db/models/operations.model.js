@@ -1,4 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize')
+const { CATEGORY_TABLE } = require('./category.model')
 const { USER_TABLE } = require('./user.model')
 
 const OPERATIONS_TABLE = 'operations'
@@ -43,6 +44,17 @@ const OperationSchema = {
     },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
+  },
+  categoryId: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    field: 'category_id',
+    references: {
+      model: CATEGORY_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'RESTRICT'
   }
 }
 
@@ -50,6 +62,9 @@ class Operation extends Model {
   static associate (models) {
     this.belongsTo(models.User, {
       as: 'user'
+    })
+    this.belongsTo(models.Category, {
+      as: 'category'
     })
   }
 
