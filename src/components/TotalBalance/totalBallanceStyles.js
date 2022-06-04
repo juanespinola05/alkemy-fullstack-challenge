@@ -36,22 +36,18 @@ export const TotalInfo = styled.div`
   @media (${devices.laptop}) {
     font-size: 18px;
   }
+  h2, p {
+    margin-bottom: 13px;
+  }
 `
 export const Title = styled.h2`
   font-weight: 900;
   font-size: 1.6em;
 `
 export const LastOpAmount = styled.p`
-  margin-top: 0.4em;
   color: ${({ color }) => color === 'red' ? 'var(--color-red)' : 'var(--color-green)'};
   font-size: 1.6em;
   font-weight: 900;
-`
-export const LastOp = styled.p`
-  margin: 0px 0 1em;
-  font-size: 1.3em;
-  font-weight: 700;
-  color: var(--color-gray);
 `
 export const ButtonsContainer = styled.div`
   font-size: 25px;
@@ -85,9 +81,4 @@ export const BallanceInt = styled.p`
 export const BallanceDec = styled.span`
   font-size: calc(1.1em / 2);
   color: var(--color-gray-lighter);
-`
-export const WalletText = styled.span`
-  font-size: 1.1em;
-  font-weight: 700;
-  color: var(--color-gray-lighter)
 `
