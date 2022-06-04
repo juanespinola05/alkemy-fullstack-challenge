@@ -1,6 +1,14 @@
-import { Nav, Card, TotalBalance } from '../'
+import {
+  Nav,
+  Card,
+  TotalBalance,
+  Subtitle,
+  Price,
+  SmallCardWrapper,
+  Percentage
+} from '../'
 // import { Routes, Route } from 'react-router-dom'
-import { AppContainer } from './appStyles'
+import { AppContainer, Padding } from './appStyles'
 import { useEffect, useState } from 'react'
 
 function App () {
@@ -30,16 +38,40 @@ function App () {
           <TotalBalance />
         </Card>
         <Card variant='small' area='small1'>
-          <h3>small 1</h3>
+          <Padding size='15px 20px'>
+            <SmallCardWrapper>
+              <Subtitle type='gray'>Total income</Subtitle>
+              <Price>200.03</Price>
+              <Percentage type='grown'>10</Percentage>
+            </SmallCardWrapper>
+          </Padding>
         </Card>
         <Card variant='small' area='small2'>
-          <h3>small 1</h3>
+          <Padding size='15px 20px'>
+            <SmallCardWrapper>
+              <Subtitle type='gray'>Total outflow</Subtitle>
+              <Price>153</Price>
+              <Percentage type='down'>10</Percentage>
+            </SmallCardWrapper>
+          </Padding>
         </Card>
         <Card variant='small' area='small3'>
-          <h3>small 1</h3>
+          <Padding size='15px 20px'>
+            <SmallCardWrapper>
+              <Subtitle type='gray'>Month Ballance</Subtitle>
+              <Price>400.12</Price>
+              <Percentage type='grown'>10</Percentage>
+            </SmallCardWrapper>
+          </Padding>
         </Card>
         <Card variant='small' area='small4'>
-          <h3>small 1</h3>
+          <Padding size='15px 20px'>
+            <SmallCardWrapper>
+              <Subtitle type='gray'>Total outflow</Subtitle>
+              <Price>153</Price>
+              <Percentage type='down'>10</Percentage>
+            </SmallCardWrapper>
+          </Padding>
         </Card>
         <Card variant='mid' area='form'>
           <h3>form</h3>
