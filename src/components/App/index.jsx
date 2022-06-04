@@ -5,14 +5,16 @@ import {
   Subtitle,
   Price,
   SmallCardWrapper,
-  Percentage
+  Percentage,
+  Operation,
+  Chart
 } from '../'
 // import { Routes, Route } from 'react-router-dom'
 import { AppContainer, Padding } from './appStyles'
 import { useEffect, useState } from 'react'
 
 function App () {
-  const [windowWidth, setWindowWidth] = useState(null)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -28,11 +30,23 @@ function App () {
   return (
     <>
       {
-        windowWidth >= 2000
-          ? <Nav.Desktop />
-          : <Nav.Mobile />
+        windowWidth < 1200 && <Nav.Mobile />
       }
       <AppContainer className='app'>
+        {
+        windowWidth >= 1200 &&
+          <Card variant='mid' area='nav'>
+            <Padding size='25px 20px'>
+              <Subtitle type='main'>
+                <b>
+                  Welcome, Juan Sebastian!
+                </b>
+              </Subtitle>
+              <br />
+              <Nav.Desktop />
+            </Padding>
+          </Card>
+        }
 
         <Card variant='mid' area='total'>
           <TotalBalance />
@@ -73,16 +87,24 @@ function App () {
             </SmallCardWrapper>
           </Padding>
         </Card>
-        <Card variant='mid' area='form'>
-          <h3>form</h3>
-        </Card>
-        <Card variant='big' area='grafic'>
-          <h3>grafic</h3>
+        <Card variant='big' area='chart'>
+          <Padding size='15px 20px'>
+            <Subtitle type='black'>Spending This Month</Subtitle>
+            <Chart />
+          </Padding>
         </Card>
         <Card variant='big' area='operations'>
-          <h3>operations</h3>
+          <Padding size='20px'>
+            <Subtitle type='black'>Latest Transactions</Subtitle>
+            <ul>
+              <Operation type='income' amount='312.13' />
+              <Operation type='outflow' amount='3552.56' />
+              <Operation type='outflow' amount='822.03' />
+              <Operation type='income' amount='260.00' />
+              <Operation type='income' amount='2360.00' />
+            </ul>
+          </Padding>
         </Card>
-
         {/* <main>
         <Routes>
           <Route path='/' element={<h1>Home</h1>} />
@@ -93,6 +115,7 @@ function App () {
           </Routes>
         </main> */}
       </AppContainer>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br />
     </>
   )
 }
