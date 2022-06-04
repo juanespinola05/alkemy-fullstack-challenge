@@ -3,7 +3,7 @@ import { NavLinksList } from '../'
 const Desktop = ({ children }) => {
   return (
     <nav>
-      <NavLinksList />
+      <NavLinksList type='flex' />
     </nav>
   )
 }

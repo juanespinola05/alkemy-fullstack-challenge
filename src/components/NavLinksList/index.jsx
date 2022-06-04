@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { LinkItem } from './navLinksListStyles'
+import { LinkItem, List } from './navLinksListStyles'
 
-const NavLinksList = () => {
+const NavLinksList = ({ type }) => {
   return (
-    <>
+    <List type={type}>
       <LinkItem>
         <Link to='/'>
           Home
@@ -15,11 +15,11 @@ const NavLinksList = () => {
         </Link>
       </LinkItem>
       <LinkItem>
-        <Link to='/my-account'>
+        <Link to='/'>
           My account
         </Link>
       </LinkItem>
-    </>
+    </List>
   )
 }
 

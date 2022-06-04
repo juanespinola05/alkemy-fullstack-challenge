@@ -32,7 +32,7 @@ const Mobile = () => {
               exit='closed'
               variants={linksListVariants}
             >
-              <NavLinksList />
+              <NavLinksList type='block' />
             </motion.ul>
           )}
         </AnimatePresence>
