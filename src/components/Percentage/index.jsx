@@ -18,7 +18,7 @@ const types = {
 
 const Percentage = ({ children, type }) => {
   return (
-    <Container type={types[type]}>
+    <Container type={types[type]} title='10% less than the previous month'>
       <Icon type='percentage' size='1.5em' color={types[type].color} />
       {types[type].prefix} {children}%
     </Container>

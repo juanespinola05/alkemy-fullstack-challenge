@@ -14,6 +14,7 @@ export const Container = styled.div`
   font-weight: 900;
   
   background-color: ${({ type }) => type.bg};
+  cursor: pointer;
   
   span {
     transform: scaleY(${({ type }) => type.scaleY})
