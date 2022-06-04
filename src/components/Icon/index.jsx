@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
 import { ReactComponent as Dashboard } from '../../assets/svg/dashboard.svg'
 import { ReactComponent as Menu } from '../../assets/svg/menu.svg'
 import { ReactComponent as Percentage } from '../../assets/svg/percentage.svg'
+import { ReactComponent as Arrow } from '../../assets/svg/arrow.svg'
 
 const types = {
   logo: styles => (
@@ -16,6 +17,9 @@ const types = {
   ),
   percentage: styles => (
     <Percentage style={styles} />
+  ),
+  arrow: styles => (
+    <Arrow styles={styles} />
   )
 }
 
