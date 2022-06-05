@@ -29,7 +29,7 @@ const Menu = () => {
       date: form.get('date'),
       type: form.get('type')
     }
-    fetch('/api/operations', {
+    fetch(import.meta.env.VITE_API_HOST + '/api/operations', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
