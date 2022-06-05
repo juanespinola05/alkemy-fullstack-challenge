@@ -2,5 +2,5 @@
 Fullstack JS Challegnge - Alkemy
 
 ### Project is not finished yet.
-- [Deployed]()
+- [Deployed](https://alkemy-fullstack-js-challenge-9s1kdh8sw-juanespinola05.vercel.app/)
 - [API](https://finance-api-juanse.herokuapp.com)
