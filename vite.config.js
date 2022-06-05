@@ -6,6 +6,14 @@ import viteSvgr from 'vite-plugin-svgr'
 export default defineConfig({
   plugins: [react(), viteSvgr()],
   server: {
-    port: 8080
+    proxy: {
+      '/api': {
+        target: 'https://finance-api-juanse.herokuapp.com',
+        changeOrigin: true,
+        secure: false,
+        ws: true
+      }
+    },
+    port: 8081
   }
 })
