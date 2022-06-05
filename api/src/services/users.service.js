@@ -1,6 +1,7 @@
 const { JWT_SECRET } = require('../config/config')
 const { models } = require('../lib/sequelize')
 const jwt = require('jsonwebtoken')
+const { WalletService } = require('./wallet.service')
 
 class UserService {
   async findOne (email) {
@@ -33,6 +34,7 @@ class UserService {
         expiresIn: 60 * 60 * 24 * 30
       }
     )
+    await WalletService.create(dataValues)
     return { token }
   }
 }
