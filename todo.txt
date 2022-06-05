@@ -1,0 +1,25 @@
+Back
+- return only token whenr registering done
+- edit operation done
+- check email existance endpoint done
+- change error handler, don't send message to client
+- check if users exits before registering
+- create all operations, values, percentages, etc. in backend, serve them in some new endpoint
+
+Front
+- edit operation form
+- add vite fonts plugin
+- form validation
+- make operation list scrollale
+- add "view all" button in operation list
+- form to change month and year in first card
+- status state: Loading, error, loading skeletons or spinners !!!
+- improve nav card
+- make chart work according to money spent per category (this info will probably come from the api hmm)
+
+- make some components more standard
+- refactor components and pages !!!
+- re-use styled components
+- on responses with 401, show message (token expired or wrong credentials) and logout
+- Update readme
+

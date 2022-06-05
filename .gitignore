@@ -125,4 +125,3 @@ dist
 api/postgres_data
 api/.env
 api/.docker
-todo.txt
