@@ -3,9 +3,13 @@ const { models } = require('../lib/sequelize')
 const jwt = require('jsonwebtoken')
 
 class UserService {
-  async find () {
-    const users = await models.User.findAll()
-    return users
+  async findOne (email) {
+    const user = await models.User.findOne({
+      where: {
+        email
+      }
+    })
+    return user
   }
 
   async findEmail (email) {
