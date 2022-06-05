@@ -42,7 +42,7 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    getOperations(`${import.meta.env.VITE_API_HOST}/${year}/${month}`)
+    getOperations(`${import.meta.env.VITE_API_HOST}/api/operations/${year}/${month}`)
     getBalanceData(`${import.meta.env.VITE_API_HOST}/api/wallet/all/${year}/${month}`)
   }, [])
 
