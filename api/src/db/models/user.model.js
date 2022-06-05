@@ -37,6 +37,10 @@ class User extends Model {
       as: 'operations',
       foreignKey: 'userId'
     })
+    this.hasOne(models.Wallet, {
+      as: 'wallet',
+      foreignKey: 'userId'
+    })
   }
 
   static config (sequelize) {
