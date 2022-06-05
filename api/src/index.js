@@ -7,23 +7,22 @@ const { logErrors, handleSQLError, handleBoomError, handleError } = require('./m
 const app = express()
 app.use(express.json())
 
+app.use(cors())
+
 setupRoutes(app)
 
-const include = [
-  'http://localhost:8081'
-]
-
-const options = {
-  origin: (origin, callback) => {
-    if (include.includes(origin) || !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error('Unauthorized'))
-    }
-  }
-}
-
-app.use(cors(options))
+// const include = [
+//   'http://localhost:8081'
+// ]
+// const options = {
+//   origin: (origin, callback) => {
+//     if (include.includes(origin) || !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Unauthorized'))
+//     }
+//   }
+// }
 
 app.get('/', (req, res) => {
   res.send('T-Finanance API')
