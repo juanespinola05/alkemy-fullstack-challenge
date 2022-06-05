@@ -2,6 +2,7 @@ const { models } = require('../lib/sequelize')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/config')
+const boom = require('@hapi/boom')
 
 class LoginService {
   async login (data) {
@@ -17,9 +18,7 @@ class LoginService {
       : await bcrypt.compare(password, user.password)
 
     if (!user || !passwordMatch) {
-      return {
-        message: 'Invalid email or password'
-      }
+      boom.unauthorized('Invalid email or password')
     }
 
     const tokenPayload = {
