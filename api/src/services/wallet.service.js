@@ -13,7 +13,7 @@ class WalletService {
   async getData (userId, email, year, month) {
     // TODO:  change limit: 200 lol
     const lastMonthOperations = await OperationsService.findByMonth({ email, year, month, limit: 200 })
-    const { dataValues: { amount } } = await models.Wallet.findOne({
+    const wallet = await models.Wallet.findOne({
       where: {
         userId
       }
@@ -31,7 +31,7 @@ class WalletService {
       total_income: incomeTotal,
       total_outflow: outflowTotal,
       total_balance: incomeTotal - outflowTotal,
-      wallet_amount: amount
+      wallet_amount: wallet.dataValues.amount
     }
     return res
   }
