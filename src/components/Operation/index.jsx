@@ -21,18 +21,19 @@ const types = {
   }
 }
 
-const Operation = ({ type, amount = 0 }) => {
+const Operation = ({ concept = 'Operation', type, amount = 0 }) => {
   const selected = types[type]
   const amountString = selected.prefix + amount
   return (
     <Container>
+      {console.log('asd')}
       <div>
         <Image type={selected}>
           <Icon type='arrow' size='30px' color={selected.color} />
         </Image>
         <div>
-          <Concept>Concept</Concept>
-          <p>Income/outflow</p>
+          <Concept>{concept}</Concept>
+          <p>{type}</p>
         </div>
       </div>
       <Amount type={selected}>{amountString}</Amount>
