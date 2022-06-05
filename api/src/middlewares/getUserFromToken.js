@@ -23,12 +23,12 @@ const getUserFromToken = (req, res, next) => {
     return next(boom.unauthorized(msg))
   }
 
-  if (!token || !decodedToken.username) {
+  if (!token || !decodedToken.email) {
     return next(boom.unauthorized('Missing or invalid token'))
   }
 
   req.user = {
-    username: decodedToken.username,
+    email: decodedToken.email,
     id: decodedToken.id
   }
   next()

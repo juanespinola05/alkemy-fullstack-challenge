@@ -13,10 +13,10 @@ class OperationsService {
     return newOperation
   }
 
-  async findByMonth ({ username, year, month, offset = 0, limit = 10 }) {
+  async findByMonth ({ email, year, month, offset = 0, limit = 10 }) {
     const user = await models.User.findOne({
       where: {
-        username
+        email
       }
     })
 

@@ -1,6 +1,6 @@
 const usersRouter = require('express').Router()
 const { handleValidation } = require('../middlewares/validation.handler')
-const { registerUserSchema, checkUsernameSchema, checkEmailSchema } = require('../schemas/users.schema')
+const { registerUserSchema, checkEmailSchema } = require('../schemas/users.schema')
 const { UserService } = require('../services/users.service')
 
 const service = new UserService()
@@ -23,19 +23,6 @@ usersRouter.post('/register',
         message: 'User created',
         ...newUser.dataValues
       })
-    } catch (error) {
-      next(error)
-    }
-  }
-)
-
-usersRouter.get('/check/username/:username',
-  handleValidation(checkUsernameSchema, 'params'),
-  async (req, res, next) => {
-    const { username } = req.params
-    try {
-      const available = await service.findUsername(username)
-      res.status(200).json(available)
     } catch (error) {
       next(error)
     }

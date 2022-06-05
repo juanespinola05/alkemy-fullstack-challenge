@@ -6,13 +6,6 @@ class UserService {
     return users
   }
 
-  async findUsername (username) {
-    const user = await models.User.findOne({
-      where: { username }
-    })
-    return { username, available: !user }
-  }
-
   async findEmail (email) {
     const user = await models.User.findOne({
       where: { email }

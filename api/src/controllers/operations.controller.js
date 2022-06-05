@@ -37,7 +37,7 @@ operationsRouter.get('/:year/:month',
     try {
       const { year, month, limit, offset } = req.params
       const operations = await service.findByMonth({
-        username: req.user.username,
+        email: req.user.email,
         year,
         month,
         limit,

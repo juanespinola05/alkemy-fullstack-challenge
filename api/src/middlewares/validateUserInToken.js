@@ -5,7 +5,7 @@ const validateUserInToken = async (req, res, next) => {
   try {
     const user = await models.User.findOne({
       where: {
-        username: req.user.username,
+        email: req.user.email,
         id: req.user.id
       }
     })
