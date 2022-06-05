@@ -18,11 +18,8 @@ usersRouter.post('/register',
   handleValidation(registerUserSchema, 'body'),
   async (req, res, next) => {
     try {
-      const newUser = await service.create(req.body)
-      res.status(201).json({
-        message: 'User created',
-        ...newUser.dataValues
-      })
+      const token = await service.create(req.body)
+      res.status(201).json(token)
     } catch (error) {
       next(error)
     }

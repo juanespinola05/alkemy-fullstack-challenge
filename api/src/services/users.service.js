@@ -1,4 +1,6 @@
+const { JWT_SECRET } = require('../config/config')
 const { models } = require('../lib/sequelize')
+const jwt = require('jsonwebtoken')
 
 class UserService {
   async find () {
@@ -14,8 +16,20 @@ class UserService {
   }
 
   async create (data) {
-    const newUser = await models.User.create(data)
-    return newUser
+    const { dataValues } = await models.User.create(data)
+    const tokenPayload = {
+      email: dataValues.email,
+      id: dataValues.id,
+      name: dataValues.name
+    }
+    const token = jwt.sign(
+      tokenPayload,
+      JWT_SECRET,
+      {
+        expiresIn: 60 * 60 * 24 * 30
+      }
+    )
+    return { token }
   }
 }
 
