@@ -125,3 +125,4 @@ dist
 api/postgres_data
 api/.env
 api/.docker
+.vercel
