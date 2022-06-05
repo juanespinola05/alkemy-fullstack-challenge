@@ -25,7 +25,8 @@ const createOperationSchema = Joi.object({
   amount: amount.required(),
   type: type.required(),
   date: date.required(),
-  userId
+  userId,
+  categoryId: userId.required()
 })
 
 const updateOperationSchema = Joi.object({
