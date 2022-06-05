@@ -7,12 +7,13 @@ export const AppContainer = styled.div`
   padding-inline: 15px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 60px 400px repeat(2, 200px) repeat(2, 400px);
+  grid-template-rows: 60px 400px repeat(2, 200px) repeat(3, 400px);
   grid-template-areas:
   '. .'
   'total total'
   'small1 small2'
   'small3 small4'
+  'nav nav'
   'chart chart'
   'operations operations';
   gap: 8px;
@@ -33,9 +34,4 @@ export const AppContainer = styled.div`
     'operations operations chart chart'
   }
 
-`
-export const Padding = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: ${({ size }) => size}
 `
