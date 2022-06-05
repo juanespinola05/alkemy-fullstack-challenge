@@ -1,11 +1,6 @@
 import { ButtonStyled } from './buttonStyles'
 
-const Button = ({ children, handleClick, primary }) => {
-  const props = {
-    onClick: handleClick
-  }
-  props.primary = primary
-
+const Button = ({ children, ...props }) => {
   return (
     <ButtonStyled {...props}>
       {children}
